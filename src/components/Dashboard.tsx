@@ -13,6 +13,10 @@ import { Brain, Calendar, CheckSquare, Plus, Sparkles, Grid3X3, Clock } from 'lu
 import { useToast } from '@/hooks/use-toast';
 
 export default function Dashboard() {
+  // These four keys keep their original 'ai-scheduler-' prefix deliberately.
+  // The app is deployed and people have schedules saved under them; renaming
+  // the keys to match the corrected product name would silently discard
+  // every existing user's data.
   const [tasks, setTasks] = useLocalStorage<Task[]>('ai-scheduler-tasks', []);
   const [schedule, setSchedule] = useLocalStorage<ScheduleBlock[]>('ai-scheduler-schedule', []);
   const [timetable, setTimetable] = useLocalStorage<TimeBlock[]>('ai-scheduler-timetable', []);
@@ -363,7 +367,7 @@ export default function Dashboard() {
                 <Brain className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-foreground">AI Task Scheduler</h1>
+                <h1 className="text-2xl font-bold text-foreground">Task Scheduler</h1>
                 <p className="text-sm text-muted-foreground">Intelligent productivity planning</p>
               </div>
             </div>
